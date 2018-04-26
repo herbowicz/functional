@@ -48,7 +48,7 @@ const curry = funcIn => {
             return funcIn(arg)
         }        
         else {
-            
+            return curry(funcIn.bind(null, arg))
         }
     } 
 }

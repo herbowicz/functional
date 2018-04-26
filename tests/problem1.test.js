@@ -6,8 +6,31 @@
     Przykład:
 
     groupBy([1,2,3,4,5], elem => elem % 2) === { '1': [1,3,5], '0': [2,4] }
-
 */
+
+
+// const groupBy = (arr, fn) => {
+//     let a = [], b = []
+//     arr.forEach(function(elem, index) {
+//         elem % 2 === 0 ? a.push(elem) : b.push(elem)
+//     });
+//     return { '1': a, '0': b }
+// }
+
+// const groupBy = (arr, fn) => {
+//     return arr.reduce((obj, e) => {
+//         const key = fn(e);
+//         !Array.isArray(obj[key]) ? obj[key] = [e] : obj[key] = [...obj[key], e];
+//         return {...obj, ...obj[key]}
+//     }, {});
+// }
+
+const groupBy = (arr, fn) => {
+    return arr.reduce((obj, e) => {
+        const grouped = obj[fn(e)] || [];
+        return {...obj, [fn(e)]: [...grouped, e]}
+    }, {});
+}
 
 describe('problem1 - groupBy', () => {
     it('returns an object', () => {

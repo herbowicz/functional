@@ -16,6 +16,17 @@
     greetButVeryLoud('John') // HELLO JOHN!!!!!!!!1111one
 */
 
+const compose = (...param) => {
+    return function(arg) {
+        return param.reduce((value, currFn) => {
+            return currFn(value);
+        }, arg);
+    }
+}
+
+
+
+
 describe('problem2 - compose', () => {
     function stringToNumber(s) {
         return parseInt(s);

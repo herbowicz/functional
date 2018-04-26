@@ -25,8 +25,34 @@
         curriedFunc(1)(2)       // zwraca funkcję
         curriedFunc(1)(2)(3)    // zwraca funkcję
         curriedFunc(1)(2)(3)(4) // zwraca 10
-
+ 
 */
+
+// {arg[0], ...arg} = arg
+
+// function sum(a, b) {
+//     return a + b;
+// }
+
+// sum(5) => (a) => a + 5;
+
+// [1, 3, 4].map(sum(5))
+
+const curry = funcIn => {
+    let l = funcIn.length;
+
+    if (l === 0) return funcIn;    
+
+    return arg => {
+        if (l === 1) {
+            return funcIn(arg)
+        }        
+        else {
+            
+        }
+    } 
+}
+
 
 describe('problem3 - curry', () => {
     it("returns the same func if it doesn't require any parameters", () => {
